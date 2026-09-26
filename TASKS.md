@@ -1,5 +1,18 @@
 # Seguimiento diario
 
+## Release 5.1.5 para #627 — 2026-09-26
+
+- Issue: #627 — fix(architecture): enforce the mandatory no-C dependency requirement across signature verification and bindings — https://github.com/bzsanti/oxidizePdf/issues/627
+- Estado: `[-]` preparación en curso. Prioridad: P1. Responsable: Codex.
+- #631 integrado en develop f9132e16 con CI completa verde sobre b8ae9af9.
+- Criterio de cierre: PR de promoción main con CI verde, etiqueta y publicación
+  GitHub/crates.io confirmadas; después binding fijado a la release del registro.
+- Base: develop integrado + main v5.1.4; conflicto de TASKS resuelto conservando
+  ambas entradas. Changelog 5.1.4 preservado; versión 5.1.5 y proveedor publicado.
+- Siguiente acción: validar paquete y QR, crear PR de release, verificar CI antes
+  de integrar y publicar exclusivamente mediante GitHub Actions.
+- No cerrar #627 hasta pin y validación final de Python. Cambios ajenos preservados.
+
 ## Integración y cierre de #627 — 2026-09-26
 
 - Issue: #627 — fix(architecture): enforce the mandatory no-C dependency requirement across signature verification and bindings — https://github.com/bzsanti/oxidizePdf/issues/627
@@ -115,6 +128,42 @@
   integrar, publicar core y fijar esa versión en Python antes de cerrar #627.
   La CI multiplataforma está añadida, todavía no ejecutada remotamente.
   No se afirma cumplimiento de wheels ya publicados ni cierre de la issue.
+## Avisos de dependencias retiradas durante release 5.1.4
+
+- Estado: `[!]` bloqueada; falta issue abierta aplicable. Prioridad: P2.
+- Responsable: mantenimiento (`bzsanti`), responsable de crear/vincular issue.
+- Issue: pendiente; las issues abiertas consultadas no cubren estos avisos.
+- Última validación: `cargo package --locked --offline` avisa de chacha20 0.10.0
+  y spin 0.9.8 retirados del registro. Ambas entradas ya estaban en develop;
+  la release no cambia el grafo de dependencias. No se infiere vulnerabilidad.
+- Dependencia externa y desbloqueo: issue específica confirmada OPEN.
+- Criterio de cierre: investigar motivo de retirada y resolver/validar el
+  seguimiento de dependencias con evidencia reproducible.
+- Siguiente acción: mantenimiento crea/vincula issue antes de corregir.
+- Restricciones: no actualizar dependencias ni recalibrar métricas bajo esta
+  entrada sin issue; no confundir con la eliminación de C de #627.
+
+
+## Release 5.1.4 — 2026-09-25
+
+- Issue: #629 — release: publish oxidize-pdf 5.1.4 maintenance fixes — https://github.com/bzsanti/oxidizePdf/issues/629
+- Estado: `[-]` preparación y validación en curso. Prioridad: P1.
+- Responsable: Codex / bzsanti. Publicación autorizada por el usuario.
+- Alcance: develop `410358d`, fixes #609/#610/#613/#615–#619 y contrato #620.
+- Última validación: #629 OPEN, última GitHub Release y registro crates.io 5.1.3;
+  #620 integrado por #628. Copia independiente: `/tmp/oxidize-release-5.1.4`.
+- Criterio de cierre: gates locales y CI verdes, PR fusionado en main,
+  etiqueta sobre merge validado, workflow exitoso, GitHub Release y crates.io.
+- Validación local final: workspace 9.801 pasan (73 ignorados), Clippy all-targets,
+  formato, contrato Python 33/Rust 6 y compilación del paquete pasan. QR cerrado
+  antes del PR; Kripteia Rust 94/100 y Security inspeccionado. Corpus oficial:
+  evidencia integrada previa, no nueva ejecución. Informes de release en docs/reports.
+- Siguiente acción: publicar rama y PR a main, esperar CI verde y fusionar;
+  etiquetar el merge validado y verificar workflow, GitHub Release y crates.io.
+- Restricciones: preservar cambios locales y baselines; #627 permanece pendiente
+  y obligatoria. Esta versión conserva C en signatures/bindings por autorización
+  explícita de publicar antes de #627. No corregir hallazgos ajenos sin issue.
+
 
 ## Issue #620 — contrato de serialización OmniDocBench
 
