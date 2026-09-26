@@ -8,6 +8,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- next-header -->
 ## [Unreleased]
 
+## [5.1.5] - 2026-09-26
+
+### Fixed
+
+- Remove native cryptography from certificate verification by consuming
+  `oxidize-webpki 0.1.0` from crates.io. Preserve WebPKI certificate chains,
+  trust, validity, key usage and CRL checks, with supported RSA, ECDSA and
+  Ed25519 algorithms unchanged (#627).
+- Preserve signed fixture bytes on Windows checkouts, preventing CRLF changes
+  from invalidating reference message digests (#627).
+
+### Changed
+
+- Gate supported product and binding dependency graphs against native code,
+  and validate an external certificate consumer with C/C++ compilers disabled.
+
 ## [5.1.4] - 2026-09-25
 
 ### Fixed
